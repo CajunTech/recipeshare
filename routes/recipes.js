@@ -4,6 +4,7 @@ const ctrl = require('../controllers');
 
 router.get('/', ctrl.recipes.renderIndex);
 router.get('/new',ctrl.recipes.renderNewRecipe)
+router.post('/new',ctrl.recipes.createRecipe)
 router.get('/:index', ctrl.recipes.renderRecipe)
 
 

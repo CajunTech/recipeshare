@@ -21,9 +21,15 @@ const renderNewRecipe = (req, res) => {
     res.render('recipes/new.ejs')
 }
 
+const createRecipe = (req, res) => {
+    Recipe.create(req.body).then((newrecipe) => {
+        res.redirect('/')
+    })
+}
 
 module.exports = {
 	renderIndex,
     renderRecipe,
-    renderNewRecipe
+    renderNewRecipe,
+    createRecipe
 };
