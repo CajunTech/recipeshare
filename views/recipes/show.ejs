@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <link a href ='/public/css/app.css' rel='stylesheet'>
+</head>
+<body class="container-fluid">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h1><%=recipe.name%></h1>
+  </div>
+<div>
+  <img src = <%=recipe.img%> width="500" height="500">
+</div>
+<h2>Instructions</h2>
+<div>
+  <% for (i=0; i<instruction.length; i++) { %>
+    <p><span style="font-weight: bold">Step <%=i+1%> :</span><%= instruction[i] %></p> 
+    <% } %>
+</div>
+</main>
+
+<footer>
+</footer>
+</body>
+</html>

@@ -30,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use('/auth', routes.auth);
 app.use('/users', routes.users);
+app.use('/recipes', routes.recipes);
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
