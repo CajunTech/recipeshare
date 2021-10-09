@@ -17,8 +17,13 @@ const renderRecipe = (req, res) => {
     })
 };
 
+const renderNewRecipe = (req, res) => {
+    res.render('recipes/new.ejs')
+}
+
 
 module.exports = {
 	renderIndex,
-    renderRecipe
+    renderRecipe,
+    renderNewRecipe
 };
