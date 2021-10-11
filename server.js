@@ -2,10 +2,12 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const methodOverride = require('method-override');
 const app = express();
+const methodOverride = require('method-override');
 const routes = require('./routes');
-app.use(cookieParser());
+
+
+
 
 const verifyToken = (req, res, next) => {
     let token = req.cookies.jwt;
@@ -23,19 +25,19 @@ const verifyToken = (req, res, next) => {
     });
 };
 
-app.use('/users', verifyToken, routes.users);
 
-
-app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(methodOverride('_method'));
-app.use('/auth', routes.auth);
-app.use('/users', routes.users);
-app.use('/recipes', routes.recipes);
-app.use(express.static('public'));
-
+app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
 	res.render('users/index.ejs');
 });
+app.use('/users', verifyToken, routes.users);
+app.use('/auth', routes.auth);
+app.use('/recipes', routes.recipes);
+app.use(express.static('public'));
+
+
 
 app.get('/*', (req, res) => {
 	res.send(`Route doesn't exist`);
@@ -44,3 +46,4 @@ app.get('/*', (req, res) => {
 app.listen(process.env.PORT, () => {
 	console.log('RecipeShare:3002');
 });
+

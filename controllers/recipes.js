@@ -10,12 +10,28 @@ const renderIndex = (req, res) => {
 const renderRecipe = (req, res) => {
     Recipe.findByPk(req.params.index).then((recipe) => {
         let instruction = recipe.instructions.split("\n")
-        console.log(instruction)
+        console.log(req.username)
         res.render('recipes/show.ejs', {
             recipe, instruction
         })
     })
 };
+
+const renderEditRecipe = (req, res) => {
+    Recipe.findByPk(req.params.index).then((recipe) => {
+		res.render('recipes/edit.ejs', { recipe });
+	});
+};
+
+const editRecipe = (req, res) => {
+        Recipe.update(req.body, {
+            where: { id: req.params.index },
+            returning: true,
+        }).then(() => {
+            console.log('successful')
+            res.redirect(`/recipes/`);
+        });
+}
 
 const renderNewRecipe = (req, res) => {
     res.render('recipes/new.ejs')
@@ -27,9 +43,19 @@ const createRecipe = (req, res) => {
     })
 }
 
+const deleteRecipe = (req, res) => {
+    console.log('route run')
+	Recipe.destroy({ where: { id: req.params.index } }).then(() => {
+		res.redirect('/');
+	});
+};
+
 module.exports = {
 	renderIndex,
     renderRecipe,
     renderNewRecipe,
-    createRecipe
+    createRecipe,
+    editRecipe,
+    renderEditRecipe,
+    deleteRecipe,
 };

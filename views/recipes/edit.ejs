@@ -13,6 +13,27 @@
   <div class="jumbotron">
     <h1>Welcome to Recipe Share</h1>
   </div>
+  <form action="/recipes/<%=recipe.id%>?_method=PUT" method="POST">
+    Recipe Name:
+    <input type="text" name="name" value="<%=recipe.name%>" />
+    <br />
+    Link to Dish Image:
+    <input type="text" name="img" value="<%=recipe.img%>" />
+    <br />
+    Cuisine:
+    <input type="text" name="cuisine" value="<%=recipe.cuisine%>" />
+    <br>
+    <br />
+    <h3>Instructions:</h3>
+    <br />
+    <span style="font-style: italic" style="margin-top: 0px"
+      >Please press <kbd>Enter</kbd> after each instruction step.<br />
+      Instructions will be automatically numbered on recipe display</span
+    ><br />
+    <textarea rows="10" cols="60" name="instructions"><%=recipe.instructions%></textarea>
+    <br />
+    <input type="submit" value="Save Changes" />
+  </form>
 
 </main>
 
