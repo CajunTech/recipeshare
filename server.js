@@ -6,9 +6,6 @@ const app = express();
 const methodOverride = require('method-override');
 const routes = require('./routes');
 
-
-
-
 const verifyToken = (req, res, next) => {
     let token = req.cookies.jwt;
   
@@ -19,12 +16,11 @@ const verifyToken = (req, res, next) => {
         return res.status(401).json({ error: "Unauthorized Request" });
       }
       req.user = decodedUser;
-      console.log(decodedUser);
+      console.log('req.user', req.user);
   
       next();
     });
 };
-
 
 app.use(cookieParser());
 app.use(methodOverride('_method'));
@@ -34,7 +30,7 @@ app.get('/', (req, res) => {
 });
 app.use('/users', verifyToken, routes.users);
 app.use('/auth', routes.auth);
-app.use('/recipes', routes.recipes);
+app.use('/recipes',verifyToken, routes.recipes);
 app.use(express.static('public'));
 
 

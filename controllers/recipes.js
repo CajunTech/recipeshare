@@ -50,6 +50,15 @@ const deleteRecipe = (req, res) => {
 	});
 };
 
+const editFavorites = (req, res) => {
+    Recipe.findByPk(req.params.index)
+            .then(foundRecipe => {
+                foundRecipe.addUser(req.user.id);
+    console.log(req.user.id)
+    res.redirect('/recipes')
+})
+}
+
 module.exports = {
 	renderIndex,
     renderRecipe,
@@ -58,4 +67,5 @@ module.exports = {
     editRecipe,
     renderEditRecipe,
     deleteRecipe,
+    editFavorites
 };

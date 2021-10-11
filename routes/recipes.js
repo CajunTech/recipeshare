@@ -9,5 +9,6 @@ router.put('/:index', ctrl.recipes.editRecipe);
 router.get('/:index/edit', ctrl.recipes.renderEditRecipe);
 router.get('/:index', ctrl.recipes.renderRecipe);
 router.delete('/:index', ctrl.recipes.deleteRecipe)
+router.put('/:index/favorites', ctrl.recipes.editFavorites);
 
 module.exports = router;

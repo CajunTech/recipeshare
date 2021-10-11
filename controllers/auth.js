@@ -76,9 +76,23 @@ const login = (req, res) => {
 	});
 };
 
+
+const renderChangePassword = (req, res) => {
+
+	res.render('users/changepass.ejs', {
+		id : req.params.id
+	})
+}
+
+const changePassword = (req, res) => {
+	res.send('Change Password')
+}
+
 module.exports = {
 	renderSignup,
 	renderLogin,
 	signup,
 	login,
+	renderChangePassword,
+	changePassword,
 };
