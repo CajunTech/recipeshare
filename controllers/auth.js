@@ -67,32 +67,20 @@ const login = (req, res) => {
 					res.redirect(`/users/profile/${foundUser.id}`);
 				} else {
 					console.log('worked');
-					return res.status(400).send('Invalid Username or Password.')
+					return res.status(400).send('Invalid Username or Password.');
 				}
 			});
 		} else {
-			return res.status(400).send('Invalid Username or Password.')
+			return res.status(400).send('Invalid Username or Password.');
 		}
 	});
 };
 
 
-const renderChangePassword = (req, res) => {
-
-	res.render('users/changepass.ejs', {
-		id : req.params.id
-	})
-}
-
-const changePassword = (req, res) => {
-	res.send('Change Password')
-}
 
 module.exports = {
 	renderSignup,
 	renderLogin,
 	signup,
 	login,
-	renderChangePassword,
-	changePassword,
 };

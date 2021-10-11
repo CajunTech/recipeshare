@@ -1,5 +1,4 @@
 const Recipe = require('../models').Recipe;
-const Ingredient = require('../models').Ingredient
 
 const renderIndex = (req, res) => {
 	Recipe.findAll().then((recipes) => {
@@ -12,10 +11,12 @@ const renderRecipe = (req, res) => {
 	Recipe.findByPk(req.params.index)
         .then((recipe) => {
 		let instruction = recipe.instructions.split('\n');
+        let ingredient = recipe.ingredients.split('\n');
 		console.log(recipe);
 		res.render('recipes/show.ejs', {
 			recipe,
-			instruction
+			instruction,
+            ingredient,
 		});
 	});
 };

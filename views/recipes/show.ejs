@@ -25,7 +25,15 @@
 <div>
   <img src = <%=recipe.img%> max-width="600" max-height="600">
 </div>
-<h2>Instructions</h2>
+<h2>Ingredients:</h2>
+<div>
+  <ul>
+  <% for (i=0; i<ingredient.length; i++) { %>
+    <li style='list-style-type:none'><%= ingredient[i] %></li> 
+    <% } %>
+    </ul>
+</div>
+<h2>Instructions:</h2>
 <div>
   <% for (i=0; i<instruction.length; i++) { %>
     <p><span style="font-weight: bold">Step <%=i+1%> :</span><%= instruction[i] %></p> 

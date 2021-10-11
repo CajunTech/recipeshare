@@ -12,8 +12,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      ingredients: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       instructions: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       img: {
         type: Sequelize.STRING
