@@ -10,11 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Ingredient.belongsTo(models.Recipe, { foreignKey: "recipeId" });
     }
   };
   Ingredient.init({
-    recipeId: DataTypes.INTEGER,
     ingredient: DataTypes.STRING
   }, {
     sequelize,

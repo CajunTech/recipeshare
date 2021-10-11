@@ -8,10 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      recipeId: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       ingredient: {
         allowNull: false,
         type: Sequelize.STRING

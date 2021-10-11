@@ -9,14 +9,7 @@ const renderIndex = (req, res) => {
 	});
 };
 const renderRecipe = (req, res) => {
-	Recipe.findByPk(req.params.index, {
-		include: [
-			{
-				model: Ingredient,
-				attributes: ['recipeId', 'ingredient'],
-			},
-		],
-        })
+	Recipe.findByPk(req.params.index)
         .then((recipe) => {
 		let instruction = recipe.instructions.split('\n');
 		console.log(recipe);
@@ -49,11 +42,6 @@ const renderNewRecipe = (req, res) => {
 
 const createRecipe = (req, res) => {
 	Recipe.create(req.body).then((newRecipe) => {
-        let ingredients = req.body.ingredient.split('\r\n')
-        console.log(ingredients)
-        for (let i = 0; i < ingredients.length; i++) {
-            newRecipe.addIngredient(ingredients[i])
-        }
 		res.redirect('/');
 	});
 };
