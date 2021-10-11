@@ -48,7 +48,12 @@ const renderNewRecipe = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
-	Recipe.create(req.body).then((newrecipe) => {
+	Recipe.create(req.body).then((newRecipe) => {
+        let ingredients = req.body.ingredient.split('\r\n')
+        console.log(ingredients)
+        for (let i = 0; i < ingredients.length; i++) {
+            newRecipe.addIngredient(ingredients[i])
+        }
 		res.redirect('/');
 	});
 };
