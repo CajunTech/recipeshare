@@ -33,7 +33,7 @@ const signup = (req, res) => {
 						}
 					);
 					res.cookie('jwt', token);
-					res.redirect(`/users/profile/${newUser.id}`);
+					res.redirect(`/users/profile`);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -64,7 +64,7 @@ const login = (req, res) => {
 					);
 					res.cookie('jwt', token);
 
-					res.redirect(`/users/profile/${foundUser.id}`);
+					res.redirect(`/users/profile`);
 				} else {
 					console.log('worked');
 					return res.status(400).send('Invalid Username or Password.');

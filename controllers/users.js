@@ -2,8 +2,7 @@ const User = require('../models').User;
 const bcrypt = require('bcryptjs');
 
 const renderProfile = (req, res) => {
-	User.findByPk(req.params.index).then((user) => {
-		console.log(req.username);
+	User.findByPk(req.user.id).then((user) => {
 		res.render('users/profile.ejs', {
 			user,
 		});
@@ -14,12 +13,12 @@ const editUser = (req, res) => {
 	User.update(req.body, {
 		where: { id: req.user.id },
 	}).then(() => {
-		res.redirect(`/users/profile/${req.params.index}`);
+		res.redirect(`/users/profile`);
 	});
 };
 
 const deleteUser = (req, res) => {
-	User.destroy({ where: { id: req.params.index } }).then(() => {
+	User.destroy({ where: { id: req.user.id } }).then(() => {
 		res.redirect('/');
 	});
 };
