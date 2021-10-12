@@ -12,9 +12,8 @@ const renderProfile = (req, res) => {
 
 const editUser = (req, res) => {
 	User.update(req.body, {
-		where: { id: req.params.index },
+		where: { id: req.user.id },
 	}).then(() => {
-		// console.log (req.body)
 		res.redirect(`/users/profile/${req.params.index}`);
 	});
 };
@@ -50,7 +49,7 @@ const changePassword = (req, res) => {
 		});
 })
 	} else {
-		return res.status(400).send('Invalid Username or Password.');
+		return res.status(400).send('Passwords did not match.');
 	}
 }
 module.exports = {

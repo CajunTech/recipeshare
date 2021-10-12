@@ -20,14 +20,14 @@
 						name="username"
 						value="<%=user.username%>"
 					/><br /><br />
-					Password:
-					<input type="text" name="password" value="<%=user.password%>" /><br />
 					<input type="submit" value="Submit Changes" />
 				</form>
+				<a href='/users/changepassword'><input type="button" value='Change Password'/></a><br />
 				<form action="/users/profile/<%=user.id%>?_method=DELETE" method="POST">
 					<input type="submit" value="Delete Account" />
 				</form>
 			</div>
+			
 		</main>
 
 		<footer></footer>
