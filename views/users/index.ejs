@@ -20,8 +20,26 @@
         <a href='/auth/login'> Existing User Login</a>
         <br/>
         <br/>
+        Must be logged in to access items below
+        <br/>
         <a href='/recipes'>Recipe Index</a>
     <div>  
+  </div>
+  <h2>Newest Recipes</h2>
+  <div class="row">
+    
+    <% for (i=1; i < 4; i++) { %>
+    
+      <div class="col-sm-4">
+    <div class= 'card' style="width: 300px;" style="height: 300px;">
+      <a href="/recipes/<%=recipes[recipes.length-i].id%>" ><img src="<%=recipes[recipes.length-i].img%>" class="card-img-top" alt="..." style="height: 300px;" style="width: 300px;"></a>
+      <div class="card-body" >
+        <h5 class="card-title"><a href="/recipes/<%=recipes[recipes.length-i].id%>" style="text-decoration:none;"><%=recipes[recipes.length-i].name%></a></h5>
+      </div>
+    </div>
+  </div>
+    <% } %>
+  
   </div>
 </main>
 <footer>
