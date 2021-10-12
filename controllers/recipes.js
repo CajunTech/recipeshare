@@ -1,4 +1,5 @@
 const Recipe = require('../models').Recipe;
+const User = require('../models').User;
 
 const renderIndex = (req, res) => {
 	Recipe.findAll().then((recipes) => {
@@ -8,15 +9,30 @@ const renderIndex = (req, res) => {
 	});
 };
 const renderRecipe = (req, res) => {
-	Recipe.findByPk(req.params.index)
+	Recipe.findByPk(req.params.index, {
+        include: [
+            {
+            model: User,
+            attributes:['id'],
+        },
+        ],
+    })
         .then((recipe) => {
+        console.log(recipe.Users)
+        let isFavorite = false;
+        for (i = 0; i < recipe.Users.length; i++) {
+            if (recipe.Users[i].id === req.user.id) {
+               isFavorite = true;
+            }
+        }
+        console.log(isFavorite)
 		let instruction = recipe.instructions.split('\n');
         let ingredient = recipe.ingredients.split('\n');
-		console.log(recipe);
 		res.render('recipes/show.ejs', {
 			recipe,
 			instruction,
             ingredient,
+            isFavorite
 		});
 	});
 };

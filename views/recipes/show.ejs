@@ -5,28 +5,31 @@
   <link a href ='/public/css/app.css' rel='stylesheet'>
 </head>
 <body class="container-fluid">
-
 <header>
   <%- include('../partials/header'); %>
 </header>
-
 <main>
   <div class="jumbotron">
     <h1><%=recipe.name%></h1>
     <a href="/recipes">Back to Recipe Index</a>
-    <div class = recipeButtons>
+    <br/>
+    <div class = recipeButtons style="display: inline-flex;gap:10px;">
+      <% if (!isFavorite) { %>
+        <form action="/recipes/<%=recipe.id%>/favorites?_method=PUT" method="POST">
+        <input type="submit" value="Add to Favorites" />
+        </form>
+        <%}%>
     <a href='/recipes/<%=recipe.id%>/edit'><input type="button" value='Edit Recipe'/></a> 
-    <form action="/recipes/<%=recipe.id%>/favorites?_method=PUT" method="POST">
-    <input type="submit" value="Add to Favorites" />
     <form action="/recipes/<%=recipe.id%>?_method=DELETE" method="POST">
       <input type="submit" value="Delete Recipe" />
   </form> 
   </div>  
  </div>
 <div>
-  <img src = <%=recipe.img%> max-width="600" max-height="600">
+  <img src = <%=recipe.img%> style="max-width:600px;max-height:600">
 </div>
 <h2>Ingredients:</h2>
+<hr style="max-width:600px;">
 <div>
   <ul>
   <% for (i=0; i<ingredient.length; i++) { %>
@@ -35,13 +38,13 @@
     </ul>
 </div>
 <h2>Instructions:</h2>
+<hr style="max-width:600px;">
 <div>
   <% for (i=0; i<instruction.length; i++) { %>
     <p><span style="font-weight: bold">Step <%=i+1%> :</span><%= instruction[i] %></p> 
     <% } %>
 </div>
 </main>
-
 <footer>
 </footer>
 </body>
