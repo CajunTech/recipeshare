@@ -1,8 +1,14 @@
 const User = require('../models').User;
+const Recipe = require('../models').Recipe;
 const bcrypt = require('bcryptjs');
 
 const renderProfile = (req, res) => {
-	User.findByPk(req.user.id).then((user) => {
+	User.findByPk(req.user.id,
+		{include: [
+			{model: Recipe,
+			}
+		]}).then((user) => {
+			console.log(user.Recipes)
 		res.render('users/profile.ejs', {
 			user,
 		});

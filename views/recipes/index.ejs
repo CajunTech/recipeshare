@@ -13,24 +13,21 @@
   <div class="jumbotron">
     <h1>Welcome to Recipe Share</h1>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Picture</th>
-        <th scope="col">Dish Name</th>
-        <th scope="col">Cuisine</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for (i=0; i < recipes.length; i++) { %>
-      <tr>
-        <th scope="row"><img src= "<%=recipes[i].img%>" width="50" height="50"></th>
-        <td><a href='/recipes/<%=recipes[i].id%>'><%=recipes[i].name%></a></td>
-        <td><%=recipes[i].cuisine%></td>
-      </tr>
-      <% } %>
-    </tbody>
-</table>
+  <div class="row">
+    
+  <% for (i=0; i < recipes.length; i++) { %>
+  
+    <div class="col-sm-4">
+  <div class= 'card' style="width: 300px;" style="height: 300px;">
+    <a href="/recipes/<%=recipes[i].id%>" ><img src="<%=recipes[i].img%>" class="card-img-top" alt="..." style="height: 300px;" style="width: 300px;"></a>
+    <div class="card-body" >
+      <h5 class="card-title"><a href="/recipes/<%=recipes[i].id%>" style="text-decoration:none;"><%=recipes[i].name%></a></h5>
+    </div>
+  </div>
+</div>
+  <% } %>
+
+</div>
 </main>
 
 <footer>

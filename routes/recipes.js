@@ -8,7 +8,8 @@ router.post('/new', ctrl.recipes.createRecipe);
 router.put('/:index', ctrl.recipes.editRecipe);
 router.get('/:index/edit', ctrl.recipes.renderEditRecipe);
 router.get('/:index', ctrl.recipes.renderRecipe);
-router.delete('/:index', ctrl.recipes.deleteRecipe)
+router.delete('/:index', ctrl.recipes.deleteRecipe);
 router.put('/:index/favorites', ctrl.recipes.editFavorites);
+router.get('/removefavorite/:index', ctrl.recipes.removeFavorite);
 
 module.exports = router;

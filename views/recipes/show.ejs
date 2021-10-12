@@ -13,6 +13,7 @@
 <main>
   <div class="jumbotron">
     <h1><%=recipe.name%></h1>
+    <a href="/recipes">Back to Recipe Index</a>
     <div class = recipeButtons>
     <a href='/recipes/<%=recipe.id%>/edit'><input type="button" value='Edit Recipe'/></a> 
     <form action="/recipes/<%=recipe.id%>/favorites?_method=PUT" method="POST">

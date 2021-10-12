@@ -62,6 +62,14 @@ const editFavorites = (req, res) => {
 	});
 };
 
+const removeFavorite = (req, res) => {
+    console.log('remove reached');
+    Recipe.findByPk(req.params.index).then((foundRecipe) => {
+        foundRecipe.removeUser(req.user.id);
+        res.redirect('/users/profile')
+    })
+}
+
 module.exports = {
 	renderIndex,
 	renderRecipe,
@@ -71,4 +79,5 @@ module.exports = {
 	renderEditRecipe,
 	deleteRecipe,
 	editFavorites,
+    removeFavorite
 };
