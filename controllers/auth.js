@@ -12,6 +12,7 @@ const renderLogin = (req, res) => {
 	res.render('users/login.ejs');
 };
 
+//user signup with password encryption
 const signup = (req, res) => {
 	bcrypt.genSalt(10, (err, salt) => {
 		if (err) return res.status(500).json(err);
@@ -36,13 +37,13 @@ const signup = (req, res) => {
 					res.redirect(`/users/profile`);
 				})
 				.catch((err) => {
-					console.log(err);
 					res.send(`err ${err}`);
 				});
 		});
 	});
 };
 
+//user login with password comparison and token assignment
 const login = (req, res) => {
 	User.findOne({
 		where: {
@@ -66,7 +67,6 @@ const login = (req, res) => {
 
 					res.redirect(`/users/profile`);
 				} else {
-					console.log('worked');
 					return res.status(400).send('Invalid Username or Password.');
 				}
 			});
@@ -75,8 +75,6 @@ const login = (req, res) => {
 		}
 	});
 };
-
-
 
 module.exports = {
 	renderSignup,

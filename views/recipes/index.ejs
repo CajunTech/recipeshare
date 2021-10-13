@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head'); %>
-</head>
-<body class="container-fluid">
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body class="container-fluid">
+		<header><%- include('../partials/header'); %></header>
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
+		<main>
+			<div class="jumbotron">
+				<h1>Recipe Index</h1>
+			</div>
+			<div class="row">
+				<% for (i=0; i < recipes.length; i++) { %>
 
-<main>
-  <div class="jumbotron">
-    <h1>Recipe Index</h1>
-  </div>
-  <div class="row">
-    
-  <% for (i=0; i < recipes.length; i++) { %>
-  
-    <div class="col-sm-4">
-  <div class= 'card' style="width: 300px;margin:10px auto;">
-    <a href="/recipes/<%=recipes[i].id%>" ><img src="<%=recipes[i].img%>" class="card-img-top" alt="..." style="height: 300px;" style="width: 300px;"></a>
-    <div class="card-body" >
-      <h5 class="card-title"><a href="/recipes/<%=recipes[i].id%>" style="text-decoration:none;"><%=recipes[i].name%></a></h5>
-    </div>
-  </div>
-</div>
-  <% } %>
+				<div class="col-sm-4">
+					<div class="card" style="width: 300px; margin: 10px auto">
+						<a href="/recipes/<%=recipes[i].id%>"
+							><img
+								src="<%=recipes[i].img%>"
+								class="card-img-top"
+								alt="..."
+								style="height: 300px"
+								style="width: 300px"
+						/></a>
+						<div class="card-body">
+							<h5 class="card-title">
+								<a
+									href="/recipes/<%=recipes[i].id%>"
+									style="text-decoration: none"
+									><%=recipes[i].name%></a
+								>
+							</h5>
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</main>
 
-</div>
-</main>
-
-<footer>
-</footer>
-</body>
+		<footer></footer>
+	</body>
 </html>

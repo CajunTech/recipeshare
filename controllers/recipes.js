@@ -8,6 +8,7 @@ const renderIndex = (req, res) => {
 		});
 	});
 };
+
 const renderRecipe = (req, res) => {
 	Recipe.findByPk(req.params.index, {
 		include: [
@@ -17,8 +18,8 @@ const renderRecipe = (req, res) => {
 			},
 		],
 	}).then((recipe) => {
-		console.log(recipe);
 		let isFavorite = false;
+		//logic to determine if rendered recipe is currently a user favorite
 		if (recipe.Users) {
 			for (i = 0; i < recipe.Users.length; i++) {
 				if (recipe.Users[i].id === req.user.id) {
@@ -26,7 +27,9 @@ const renderRecipe = (req, res) => {
 				}
 			}
 		}
-        let amAuthor = req.user.id
+		//setting for EJS logic to determine whether to allow EJS button display options
+		let amAuthor = req.user.id;
+		//splitting ingretients and instructions into an array for easy display with EJS
 		let instruction = recipe.instructions.split('\n');
 		let ingredient = recipe.ingredients.split('\n');
 		res.render('recipes/show.ejs', {
@@ -34,8 +37,9 @@ const renderRecipe = (req, res) => {
 			instruction,
 			ingredient,
 			isFavorite,
-            amAuthor,
-            amAdmin : req.user.username
+			amAuthor,
+			//setting variable to pass username to confirm if admin in EJS
+			amAdmin: req.user.username,
 		});
 	});
 };
@@ -51,7 +55,6 @@ const editRecipe = (req, res) => {
 		where: { id: req.params.index },
 		returning: true,
 	}).then(() => {
-		console.log('successful');
 		res.redirect(`/recipes/`);
 	});
 };
@@ -61,14 +64,13 @@ const renderNewRecipe = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
-    req.body.author = req.user.id
+	req.body.author = req.user.id;
 	Recipe.create(req.body).then(() => {
 		res.redirect('/');
 	});
 };
 
 const deleteRecipe = (req, res) => {
-	console.log('route run');
 	Recipe.destroy({ where: { id: req.params.index } }).then(() => {
 		res.redirect('/');
 	});
@@ -77,13 +79,12 @@ const deleteRecipe = (req, res) => {
 const editFavorites = (req, res) => {
 	Recipe.findByPk(req.params.index).then((foundRecipe) => {
 		foundRecipe.addUser(req.user.id);
-		console.log(req.user.id);
+
 		res.redirect('/recipes');
 	});
 };
 
 const removeFavorite = (req, res) => {
-	console.log('remove reached');
 	Recipe.findByPk(req.params.index).then((foundRecipe) => {
 		foundRecipe.removeUser(req.user.id);
 		res.redirect('/users/profile');
