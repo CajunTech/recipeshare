@@ -58,7 +58,9 @@ const renderNewRecipe = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
-	Recipe.create(req.body).then((newRecipe) => {
+	Recipe.create(req.body, {
+        where: { authorId: req.user.id },
+    }).then(() => {
 		res.redirect('/');
 	});
 };
