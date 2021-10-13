@@ -97,6 +97,9 @@ Code snippet of dynamic Favorite, Edit, and Delete button creation:
 - Allow users to logout of application.
 - Allow admin to edit/delete users.
 - Allow filtering by cuisine and recipe author.
+- Add search functionality
+- Add recipe rating system
+- Replace password entry with asterisks on relative fields
 </br>
 </br>
 </br>
