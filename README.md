@@ -44,7 +44,7 @@ User profile (contributed/favorite) sample:
 <br>
 ![recipeshare_profile](https://user-images.githubusercontent.com/89054252/137161720-098786b3-b8fe-487f-aed3-28a6fbe44a62.png)
 <br>
-Code snippet for dynamic Favorite, Edit, and Delete button creation:
+Code snippet of dynamic Favorite, Edit, and Delete button creation:
 ```js
       <% if (!isFavorite) { %>
         <form action="/recipes/<%=recipe.id%>/favorites?_method=PUT" method="POST">
@@ -58,6 +58,33 @@ Code snippet for dynamic Favorite, Edit, and Delete button creation:
   </form> 
   <% } %>
   ```
+  Code snippets of dynamic step creation of recipes (users are asked to press enter after each step when creating/editing a recipe):
+  ```js
+    let instruction = recipe.instructions.split('\n');
+	let ingredient = recipe.ingredients.split('\n');
+	res.render('recipes/show.ejs', {
+		recipe,
+		instruction,
+		ingredient,
+ ```
+ ```js
+ <h2>Ingredients:</h2>
+<hr style="max-width:600px;">
+<div>
+  <ul>
+  <% for (i=0; i<ingredient.length; i++) { %>
+    <li style='list-style-type:none'><%= ingredient[i] %></li> 
+    <% } %>
+    </ul>
+</div>
+<h2>Instructions:</h2>
+<hr style="max-width:600px;">
+<div>
+  <% for (i=0; i<instruction.length; i++) { %>
+    <p><span style="font-weight: bold">Step <%=i+1%> :</span><%= instruction[i] %></p> 
+    <% } %>
+</div>
+```
   
 
 
