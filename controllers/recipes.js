@@ -19,12 +19,13 @@ const renderRecipe = (req, res) => {
 	}).then((recipe) => {
 		console.log(recipe);
 		let isFavorite = false;
+		if (recipe.Users) {
 			for (i = 0; i < recipe.Users.length; i++) {
 				if (recipe.Users[i].id === req.user.id) {
 					isFavorite = true;
 				}
 			}
-		console.log(isFavorite);
+		}
         let amAuthor = req.user.id
 		let instruction = recipe.instructions.split('\n');
 		let ingredient = recipe.ingredients.split('\n');
