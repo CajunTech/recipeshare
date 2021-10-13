@@ -33,7 +33,8 @@ const renderRecipe = (req, res) => {
 			instruction,
 			ingredient,
 			isFavorite,
-            amAuthor
+            amAuthor,
+            amAdmin : req.user.username
 		});
 	});
 };
