@@ -85,6 +85,24 @@ Code snippet of dynamic Favorite, Edit, and Delete button creation:
     <% } %>
 </div>
 ```
-  
+<br>
 
+# Known issues:
+- None at this time
+
+<br>
+
+
+# What's left:
+- Allow users to logout of application.
+- Allow admin to edit/delete users.
+- Allow filtering by cuisine and recipe author.
+</br>
+</br>
+</br>
+</br>
+</br>
+This website may contain copyrighted material, the use of which may not have been specifically authorized by the copyright owner. The material contained in this website is distributed without profit for research and educational purposes.
+This should constitute a ‘fair use’ of any such copyrighted material (referenced and provided for in section 107 of the US Copyright Law).
+If you wish to use any copyrighted material from this site for purposes of your own that go beyond ‘fair use’, you must obtain expressed permission from the copyright owner.
 
