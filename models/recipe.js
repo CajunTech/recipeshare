@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'recipeId',
 				otherKey: 'userId',
 			});
-      Recipe.belongsTo(models.User, { foreignKey: 'author' });
 		}
 	}
 	Recipe.init(

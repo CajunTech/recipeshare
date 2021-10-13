@@ -31,6 +31,38 @@
 			<br />
 			<a href="/recipes/">Recipe Index Page</a>
 			<br />
+			<div id="ownedRecipes">
+				<table class="table">
+					<h2>Recipes Contributed</h2>
+					<thead>
+						<tr>
+							<th scope="col">Picture</th>
+							<th scope="col">Dish Name</th>
+							<th scope="col">Cuisine</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for (let i=0; i < owner.length; i++) { %>
+						<tr>
+							<th scope="row">
+								<a href="/recipes/<%=owner[i].id%>"
+									><img src="<%=owner[i].img%>" width="50" height="50"
+								/></a>
+							</th>
+							<td>
+								<a
+									href="/recipes/<%=owner[i].id%>"
+									style="text-decoration: none"
+									><%=owner[i].name%></a
+								>
+							</td>
+							<td><%=owner[i].cuisine%></td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</div>
+			<br/>
 			<div id="favoriteRecipes">
 				<table class="table">
 					<h2>Favorite Recipes</h2>

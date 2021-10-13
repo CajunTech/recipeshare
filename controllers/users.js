@@ -4,16 +4,21 @@ const Recipe = require('../models').Recipe;
 const bcrypt = require('bcryptjs');
 
 const renderProfile = (req, res) => {
+	Recipe.findAll({
+		where: { author: req.user.id }
+	}).then((owner) => {
 	User.findByPk(req.user.id,
 		{include: [
 			{model: Recipe,
 			}
 		]}).then((user) => {
-			console.log(user)
+			console.log(owner)
 		res.render('users/profile.ejs', {
 			user,
+			owner
 		});
 	});
+})
 };
 
 const editUser = (req, res) => {
