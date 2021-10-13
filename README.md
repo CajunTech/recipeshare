@@ -88,7 +88,7 @@ Code snippet of dynamic Favorite, Edit, and Delete button creation:
 <br>
 
 # Known issues:
-- None at this time
+- When working with a recipe that has text, but no link (missing \ or http:\\ at beginning) get a strange error in server console where a sequel statement ends with recipe.id = image field text. This does not occur when the text in image field begins with \ or http:\\ even if it is not a valid link. In this case the recipe.id = the actual integer recipe UID. All items continue to function fine in either instance.
 
 <br>
 
