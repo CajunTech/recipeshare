@@ -19,13 +19,11 @@ const renderRecipe = (req, res) => {
 	}).then((recipe) => {
 		console.log(recipe);
 		let isFavorite = false;
-		if (Array.isArray(recipe.Users.length)) {
-			for (i = 0; i < recipe.User.length; i++) {
+			for (i = 0; i < recipe.Users.length; i++) {
 				if (recipe.Users[i].id === req.user.id) {
 					isFavorite = true;
 				}
 			}
-		}
 		console.log(isFavorite);
 		let instruction = recipe.instructions.split('\n');
 		let ingredient = recipe.ingredients.split('\n');
