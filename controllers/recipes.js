@@ -25,6 +25,7 @@ const renderRecipe = (req, res) => {
 				}
 			}
 		console.log(isFavorite);
+        let amAuthor = req.user.id
 		let instruction = recipe.instructions.split('\n');
 		let ingredient = recipe.ingredients.split('\n');
 		res.render('recipes/show.ejs', {
@@ -32,6 +33,7 @@ const renderRecipe = (req, res) => {
 			instruction,
 			ingredient,
 			isFavorite,
+            amAuthor
 		});
 	});
 };

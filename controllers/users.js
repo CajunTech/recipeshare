@@ -1,5 +1,6 @@
 const User = require('../models').User;
 const Recipe = require('../models').Recipe;
+
 const bcrypt = require('bcryptjs');
 
 const renderProfile = (req, res) => {
@@ -8,7 +9,7 @@ const renderProfile = (req, res) => {
 			{model: Recipe,
 			}
 		]}).then((user) => {
-			console.log(user.Recipes)
+			console.log(user)
 		res.render('users/profile.ejs', {
 			user,
 		});
