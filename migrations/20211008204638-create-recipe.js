@@ -27,6 +27,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      author: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         defaultValue: new Date(),

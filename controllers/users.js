@@ -57,6 +57,8 @@ const changePassword = (req, res) => {
 		return res.status(400).send('Passwords did not match.');
 	}
 }
+
+
 module.exports = {
 	renderProfile,
 	editUser,

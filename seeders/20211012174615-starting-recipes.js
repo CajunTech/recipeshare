@@ -55,22 +55,18 @@ module.exports = {
       cuisine:`American`
     },
     {
-    name:`Kentucky Fried Chicken`,
-    ingredients:`1 whole chicken
-    2 quarts neutral frying oil
-    1 egg white
-    1 1/2 cups flour
-    1 tablespoon brown sugar
-    1 tablespoon salt
-    1 tablespoon paprika
-    2 teaspoons onion salt
-    1 teaspoon chili powder
-    1 teaspoon black pepper
-    1/2 teaspoon celery salt
-    1/2 teaspoon sage
-    1/2 teaspoon garlic powder
-    1/2 teaspoon allspice
-    1/2 tablespoon oregano`,
+    name:`Beef Brisket Pot Roast`,
+    ingredients:`4-5lb Beef Bricket
+    Dash Salt
+    3 Onion
+    5 cloves Garlic
+    1 Sprig Thyme
+    1 sprig Rosemary,
+    4 Bay Leaves
+    2 cups beef stock,
+    3 Large Carrots,
+    1 Tbsp Mustard
+    4 Mashed Potatoes`,
     instructions:`Prepare the brisket for cooking: On one side of the brisket there should be a layer of fat, which you want. If there are any large chunks of fat, cut them off and discard them. Large pieces of fat will not be able to render out completely. Using a sharp knife, score the fat in parallel lines, about 3/4-inch apart. Slice through the fat, not the beef. Repeat in the opposite direction to make a cross-hatch pattern. Salt the brisket well and let it sit at room temperature for 30 minutes.
     Sear the brisket: You'll need an oven-proof, thick-bottomed pot with a cover, or Dutch oven, that is just wide enough to hold the brisket roast with a little room for the onions. Pat the brisket dry and place it, fatty side down, into the pot and place it on medium high heat. Cook for 5-8 minutes, lightly sizzling, until the fat side is nicely browned. (If the roast seems to be cooking too fast, turn the heat down to medium. You want a steady sizzle, not a raging sear.) Turn the brisket over and cook for a few minutes more to brown the other side.
     Sauté the onions and garlic: When the brisket has browned, remove it from the pot and set aside. There should be a couple tablespoons of fat rendered in the pot, if not, add some olive oil. Add the chopped onions and increase the heat to high. Sprinkle a little salt on the onions. Sauté, stirring often, until the onions are lightly browned, 5-8 minutes. Stir in the garlic and cook 1-2 more minutes.

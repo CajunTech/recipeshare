@@ -10,29 +10,30 @@ const renderIndex = (req, res) => {
 };
 const renderRecipe = (req, res) => {
 	Recipe.findByPk(req.params.index, {
-        include: [
-            {
-            model: User,
-            attributes:['id'],
-        },
-        ],
-    })
-        .then((recipe) => {
-        console.log(recipe.Users)
-        let isFavorite = false;
-        for (i = 0; i < recipe.Users.length; i++) {
-            if (recipe.Users[i].id === req.user.id) {
-               isFavorite = true;
-            }
-        }
-        console.log(isFavorite)
+		include: [
+			{
+				model: User,
+				attributes: ['id'],
+			},
+		],
+	}).then((recipe) => {
+		console.log(recipe);
+		let isFavorite = false;
+		if (Array.isArray(recipe.Users.length)) {
+			for (i = 0; i < recipe.User.length; i++) {
+				if (recipe.Users[i].id === req.user.id) {
+					isFavorite = true;
+				}
+			}
+		}
+		console.log(isFavorite);
 		let instruction = recipe.instructions.split('\n');
-        let ingredient = recipe.ingredients.split('\n');
+		let ingredient = recipe.ingredients.split('\n');
 		res.render('recipes/show.ejs', {
 			recipe,
 			instruction,
-            ingredient,
-            isFavorite
+			ingredient,
+			isFavorite,
 		});
 	});
 };
@@ -58,9 +59,8 @@ const renderNewRecipe = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
-	Recipe.create(req.body, {
-        where: { authorId: req.user.id },
-    }).then(() => {
+    req.body.author = req.user.id
+	Recipe.create(req.body).then(() => {
 		res.redirect('/');
 	});
 };
@@ -81,12 +81,12 @@ const editFavorites = (req, res) => {
 };
 
 const removeFavorite = (req, res) => {
-    console.log('remove reached');
-    Recipe.findByPk(req.params.index).then((foundRecipe) => {
-        foundRecipe.removeUser(req.user.id);
-        res.redirect('/users/profile')
-    })
-}
+	console.log('remove reached');
+	Recipe.findByPk(req.params.index).then((foundRecipe) => {
+		foundRecipe.removeUser(req.user.id);
+		res.redirect('/users/profile');
+	});
+};
 
 module.exports = {
 	renderIndex,
@@ -97,5 +97,5 @@ module.exports = {
 	renderEditRecipe,
 	deleteRecipe,
 	editFavorites,
-    removeFavorite
+	removeFavorite,
 };
