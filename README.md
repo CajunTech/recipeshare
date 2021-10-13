@@ -7,3 +7,29 @@ Link to application - https://recipeshare-app.herokuapp.com/
 # Technologies used:</br>
 Node.js, PostgreSQL, JavaScript, CSS (Bootstrap), Embedded JavaScript, Sequelize ORM, JSON Web Tokens  
 </br>
+
+# Approach:
+The RecipeShare project started out with an entitity relationship diagram (ERD) and a few user stories. I initially focused on user authentication functionality to allow user persistence and hashed passwords. Once authentication was completed I moved on to building out the recipe views, functionality, and used a Boostrap default theme to allow for some styling as I continued to build out the application. After minimal viable project was met I started adding additional functionality (favorites, user restrictions on edit/delete recipe, etc.) and made adjustment to styling by migrating from a table format to card based format.
+</br>
+</br>
+ERD:
+<br/>
+![recipeshare_erd](https://user-images.githubusercontent.com/89054252/137154588-dee3790d-13ff-4fd1-9454-48c28060f61e.png)
+</br>
+
+User Stories:
+- As a User I would like the ability to view a list of recipes.
+- As a User I would like the ability to view individual recipes with ingredients and instructions.
+- As a User I would like the ability to create recipes.
+- As a User I would like the ability to edit my recipes.
+- As a User I would like the ability to delete my recipes.
+- As a User I would like the ability to save recipes as favorites.
+- As a User I would like the ability to easily view and access my favorites.
+- As a User I would like the ability to easily view and access recipes I have created.
+- As an Admin I would like to require Users to create accounts for the application.
+- As an Admin I would like to require Users to login the application.
+- As a User I would like the ability to change my password.
+- As a User I would like the ability to edit my account.
+- As a User I would like the ability to delete my account.
+- As an Admin I would like the ability to delete any recipes.
+</br>
